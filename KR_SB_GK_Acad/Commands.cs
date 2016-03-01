@@ -14,7 +14,7 @@ namespace KR_SB_GK_Acad
 {
    public class Commands
    {
-      [CommandMethod("PIK", "SB_ExportColorIndexToD", CommandFlags.Modal | CommandFlags.NoPaperSpace | CommandFlags.NoBlockEditor)]
+      [CommandMethod("PIK", "SB_ExportColorIndexToDB", CommandFlags.Modal | CommandFlags.NoPaperSpace | CommandFlags.NoBlockEditor)]
       public void SB_ExportColorIndexToDB()
       {
          Logger.Log.StartCommand(nameof(SB_ExportColorIndexToDB));

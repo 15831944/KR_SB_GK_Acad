@@ -1,4 +1,5 @@
 ﻿using System;
+using AcadLib.Errors;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 
@@ -13,7 +14,27 @@ namespace KR_SB_GK_Acad.Model.Select
       public string Mark { get; private set; }
       public string ColorIndex { get; private set; }
       public Point3d Position { get; private set; }
-      public Workspace Workspace { get; set; }                    
+      public Workspace Workspace { get; set; }
+      public bool IsOk { get { return string.IsNullOrEmpty(Error); } }
+      public bool IsBlockOutsidePanel { get; private set; }
+      public string Error { get; private set; }
+
+      public Extents3d Extents {
+         get
+         {
+            if (!_hasExtents)
+            {
+               _hasExtents = true;
+               using (var blRef = IdBlRef.Open(OpenMode.ForRead, false, true) as BlockReference)
+               {
+                  _extents = blRef.GeometricExtents;
+               }
+            }
+            return _extents;
+         }
+      }
+      private Extents3d _extents;
+      private bool _hasExtents;
 
       public OutsidePanel(BlockReference blRef, string blName)
       {
@@ -29,20 +50,22 @@ namespace KR_SB_GK_Acad.Model.Select
       {
          if (blRef.AttributeCollection == null)
          {
-            throw new Exception(NotOutsidePanel);
+            IsBlockOutsidePanel = false;
          }
-
-         foreach (ObjectId idAtr in blRef.AttributeCollection)
+         else
          {
-            using (var atrRef = idAtr.Open(OpenMode.ForRead, false, true) as AttributeReference)
+            foreach (ObjectId idAtr in blRef.AttributeCollection)
             {
-               if (atrRef.Tag.Equals(Options.Instance.OutsidePanelAttrMark, StringComparison.OrdinalIgnoreCase))
+               using (var atrRef = idAtr.Open(OpenMode.ForRead, false, true) as AttributeReference)
                {
-                  Mark = atrRef.TextString;
-               }
-               else if (atrRef.Tag.Equals(Options.Instance.OutsidePanelAttrColorIndex, StringComparison.OrdinalIgnoreCase))
-               {
-                  ColorIndex = atrRef.TextString;
+                  if (atrRef.Tag.Equals(Options.Instance.OutsidePanelAttrMark, StringComparison.OrdinalIgnoreCase))
+                  {
+                     Mark = atrRef.TextString.Trim();
+                  }
+                  else if (atrRef.Tag.Equals(Options.Instance.OutsidePanelAttrColorIndex, StringComparison.OrdinalIgnoreCase))
+                  {
+                     ColorIndex = atrRef.TextString.Trim();
+                  }
                }
             }
          }
@@ -54,13 +77,27 @@ namespace KR_SB_GK_Acad.Model.Select
          if (Mark == null || ColorIndex == null)
          {
             // Это не блок наружки
-            throw new Exception(NotOutsidePanel);
+            IsBlockOutsidePanel = false;
+            return;           
+         }
+
+         IsBlockOutsidePanel = true;
+
+         if (string.IsNullOrEmpty(ColorIndex))
+         {
+            IsBlockOutsidePanel = true;            
+            Error = $"Пустая покраска в блоке панели {BlName}.";            
+         }
+         if (string.IsNullOrEmpty(Mark))
+         {
+            IsBlockOutsidePanel = true;
+            Error = $"Пустая марка в блоке панели {BlName}.";
          }
       }
 
       public override string ToString()
       {
-         return Mark + ColorIndex;
+         return Mark + ColorIndex + ", Секция " + Workspace.Section + ", Этаж " + Workspace.Floor;
       }
    }
 }

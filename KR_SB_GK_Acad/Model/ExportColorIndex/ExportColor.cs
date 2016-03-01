@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AcadLib.Errors;
+using Autodesk.AutoCAD.ApplicationServices;
 using KR_SB_GK_Acad.Model.Select;
 using RTreeLib;
 
@@ -24,9 +25,14 @@ namespace KR_SB_GK_Acad.Model.ExportColorIndex
             // Есть ошибки при определении блоков - продолжать или нет - показ пользователю формы с ошибками, с возможостью продолжить или прервать.
             Inspector.ShowDialog();
             Inspector.Clear();
-         }             
+         }
 
-
+         FormExport formExport = new FormExport(outsPanelToExport);
+         if (Application.ShowModalDialog(formExport) != System.Windows.Forms.DialogResult.OK)
+         {
+            formExport.SetDialogMode(false);
+            Application.ShowModelessDialog(formExport);
+         }         
       }
 
       private List<OutsidePanel> defineOutsidePanelsToExport()

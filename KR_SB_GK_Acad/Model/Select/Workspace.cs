@@ -9,6 +9,8 @@ namespace KR_SB_GK_Acad.Model.Select
       public Extents3d Extents { get; private set; }
       public string Section { get; private set; }
       public string Floor { get; private set; }
+      public bool IsOk { get { return string.IsNullOrEmpty(Error); } }
+      public string Error { get; private set; } 
 
       public Workspace(BlockReference blRef)
       {
@@ -16,32 +18,34 @@ namespace KR_SB_GK_Acad.Model.Select
          {
             Extents = blRef.GeometricExtents;
          }
-         catch (Exception ex)
-         {
-            throw new Exception("Ошибка определения границ блока. Необходимо выполнить проверку чертежа командой _audit с исправлением ошибок.", ex);                
+         catch
+         {            
+            Error = "Ошибка определения границ блока. Необходимо выполнить проверку чертежа командой _audit с исправлением ошибок.";            
          }
          defineAttrs(blRef);
          checks();
-      }      
+      }
 
       private void defineAttrs(BlockReference blRef)
       {
          if (blRef.AttributeCollection == null)
          {
-            throw new Exception ($"Не определены атрибуты: '{Options.Instance.WorkspaceAttrSection}', '{Options.Instance.WorkspaceAttrFloor}'.");
+            Error = $"Не определены атрибуты: '{Options.Instance.WorkspaceAttrSection}', '{Options.Instance.WorkspaceAttrFloor}'.";
          }
-
-         foreach (ObjectId idAtr in blRef.AttributeCollection)
+         else
          {
-            using (var atrRef = idAtr.Open( OpenMode.ForRead, false, true) as AttributeReference)
+            foreach (ObjectId idAtr in blRef.AttributeCollection)
             {
-               if (atrRef.Tag.Equals(Options.Instance.WorkspaceAttrSection, StringComparison.OrdinalIgnoreCase))
+               using (var atrRef = idAtr.Open(OpenMode.ForRead, false, true) as AttributeReference)
                {
-                  Section = atrRef.TextString;
-               }
-               else if (atrRef.Tag.Equals(Options.Instance.WorkspaceAttrFloor, StringComparison.OrdinalIgnoreCase))
-               {
-                  Floor = atrRef.TextString;
+                  if (atrRef.Tag.Equals(Options.Instance.WorkspaceAttrSection, StringComparison.OrdinalIgnoreCase))
+                  {
+                     Section = atrRef.TextString;
+                  }
+                  else if (atrRef.Tag.Equals(Options.Instance.WorkspaceAttrFloor, StringComparison.OrdinalIgnoreCase))
+                  {
+                     Floor = atrRef.TextString;
+                  }
                }
             }
          }
@@ -49,7 +53,7 @@ namespace KR_SB_GK_Acad.Model.Select
 
       private void checks()
       {
-         // Пока никаких проверок
+         // Пока никаких проверок         
       }
    }
 }

@@ -56,7 +56,15 @@ namespace KR_SB_GK_Acad.Model.Select
                      try
                      {
                         Workspace ws = new Workspace(blRef);
-                        Workspaces.Add(ws);
+                        if (ws.IsOk)
+                        {
+                           Workspaces.Add(ws);
+                        }
+                        else
+                        {
+                           Inspector.AddError($"Ошибка определения блока рабочей области - {ws.Error}.",
+                              blRef, System.Drawing.SystemIcons.Error);
+                        }   
                      }
                      catch (Exception ex)
                      {
@@ -70,9 +78,24 @@ namespace KR_SB_GK_Acad.Model.Select
                      try
                      {
                         OutsidePanel outPanel = new OutsidePanel(blRef, blName);
-                        OutsidePanels.Add(outPanel);
+                        if (outPanel.IsBlockOutsidePanel)
+                        {
+                           if (outPanel.IsOk)
+                           {
+                              OutsidePanels.Add(outPanel);
+                           }
+                           else
+                           {
+                              Inspector.AddError($"Ошибка определения блока наружной стеновой панели - {outPanel.Error}.",
+                              blRef, System.Drawing.SystemIcons.Error);
+                           }                           
+                        }                        
                      }
-                     catch (Exception ex) when (ex.Message != OutsidePanel.NotOutsidePanel)
+                     catch (Exception ex) when (ex.Message == OutsidePanel.NotOutsidePanel)
+                     {
+                        // пропускаем этот блок - это не наружка
+                     }
+                     catch (Exception ex) 
                      {
                         Inspector.AddError($"Ошибка определения блока наружной стеновой панели - {ex.Message}.",
                               blRef, System.Drawing.SystemIcons.Error);
