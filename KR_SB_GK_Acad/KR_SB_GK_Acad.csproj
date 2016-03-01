@@ -69,6 +69,12 @@
     <Compile Include="Logger.cs" />
     <Compile Include="Model\ExportColorIndex\CheckAccess.cs" />
     <Compile Include="Model\ExportColorIndex\ExportColor.cs" />
+    <Compile Include="Model\ExportColorIndex\FormExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\ExportColorIndex\FormExport.Designer.cs">
+      <DependentUpon>FormExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Options\FormOptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,9 +88,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AutoCADNetLoad.scr" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Model\ExportColorIndex\FormExport.resx">
+      <DependentUpon>FormExport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Model\Options\FormOptions.resx">
       <DependentUpon>FormOptions.cs</DependentUpon>
     </EmbeddedResource>

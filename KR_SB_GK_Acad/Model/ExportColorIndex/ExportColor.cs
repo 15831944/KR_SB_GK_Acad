@@ -25,6 +25,8 @@ namespace KR_SB_GK_Acad.Model.ExportColorIndex
             Inspector.ShowDialog();
             Inspector.Clear();
          }             
+
+
       }
 
       private List<OutsidePanel> defineOutsidePanelsToExport()
@@ -50,7 +52,7 @@ namespace KR_SB_GK_Acad.Model.ExportColorIndex
             {
                // Для панели не определена рабочая область
                Inspector.AddError($"Для наружной стеновой панели '{outPanel.Mark}' не определена рабочая область.",
-                  outPanel.IdBlRef, System.Drawing.SystemIcons.)
+                  outPanel.IdBlRef, System.Drawing.SystemIcons.Exclamation);
             }
          }
          return outPanelsToExport;

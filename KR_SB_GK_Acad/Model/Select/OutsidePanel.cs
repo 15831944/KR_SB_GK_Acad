@@ -57,5 +57,10 @@ namespace KR_SB_GK_Acad.Model.Select
             throw new Exception(NotOutsidePanel);
          }
       }
+
+      public override string ToString()
+      {
+         return Mark + ColorIndex;
+      }
    }
 }
