@@ -9,11 +9,17 @@ using Autodesk.AutoCAD.Runtime;
 using KR_SB_GK_Acad.Model.ExportColorIndex;
 
 [assembly: CommandClass(typeof(KR_SB_GK_Acad.Commands))]
+[assembly: ExtensionApplication(typeof(KR_SB_GK_Acad.Commands))]
 
 namespace KR_SB_GK_Acad
 {
-   public class Commands
+   public class Commands : IExtensionApplication
    {
+      public void Initialize()
+      {
+         AcadLib.LoadService.LoadEntityFramework();
+      }
+
       [CommandMethod("PIK", "SB_ExportColorIndexToDB", CommandFlags.Modal | CommandFlags.NoPaperSpace | CommandFlags.NoBlockEditor)]
       public void SB_ExportColorIndexToDB()
       {
@@ -47,6 +53,10 @@ namespace KR_SB_GK_Acad
                Logger.Log.Error(ex, $"{nameof(SB_ExportColorIndexToDB)}. {doc.Name}");
             }
          }
+      }
+
+      public void Terminate()
+      {         
       }
    }
 }

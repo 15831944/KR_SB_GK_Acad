@@ -2,8 +2,9 @@
 using AcadLib.Errors;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
+using KR_SB_GK_Acad.Model.ExportColorIndex.DB;
 
-namespace KR_SB_GK_Acad.Model.Select
+namespace KR_SB_GK_Acad.Model.ExportColorIndex
 {
    public class OutsidePanel
    {
@@ -18,6 +19,8 @@ namespace KR_SB_GK_Acad.Model.Select
       public bool IsOk { get { return string.IsNullOrEmpty(Error); } }
       public bool IsBlockOutsidePanel { get; private set; }
       public string Error { get; private set; }
+      public string Info { get; private set; }
+      public EnumBaseStatus DbStatus { get; set; }
 
       public Extents3d Extents {
          get

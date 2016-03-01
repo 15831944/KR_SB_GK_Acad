@@ -1,0 +1,13 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KR_SB_GK_Acad.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SaprCon" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;metadata=res://*/Model.ExportColorIndex.DB.Model.csdl|res://*/Model.ExportColorIndex.DB.Model.ssdl|res://*/Model.ExportColorIndex.DB.Model.msl;provider=System.Data.SqlClient;provider connection string="data source=cad01pik;initial catalog=SAPR;persist security info=True;user id=cad_ar;password=qwerty!2345;MultipleActiveResultSets=True;App=EntityFramework"&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">metadata=res://*/Model.ExportColorIndex.DB.Model.csdl|res://*/Model.ExportColorIndex.DB.Model.ssdl|res://*/Model.ExportColorIndex.DB.Model.msl;provider=System.Data.SqlClient;provider connection string="data source=cad01pik;initial catalog=SAPR;persist security info=True;user id=cad_ar;password=qwerty!2345;MultipleActiveResultSets=True;App=EntityFramework"</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

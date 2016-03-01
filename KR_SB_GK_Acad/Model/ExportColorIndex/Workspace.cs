@@ -2,7 +2,7 @@
 using AcadLib.Errors;
 using Autodesk.AutoCAD.DatabaseServices;
 
-namespace KR_SB_GK_Acad.Model.Select
+namespace KR_SB_GK_Acad.Model.ExportColorIndex
 {
    public class Workspace
    {

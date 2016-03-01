@@ -27,12 +27,19 @@ namespace KR_SB_GK_Acad.Model.ExportColorIndex
             Inspector.Clear();
          }
 
+         // Проверка панелей по базе - есть ли такие марки панелей.
+         DB.DbCheckPanels.Check(outsPanelToExport);
+
          FormExport formExport = new FormExport(outsPanelToExport);
          if (Application.ShowModalDialog(formExport) != System.Windows.Forms.DialogResult.OK)
          {
             formExport.SetDialogMode(false);
             Application.ShowModelessDialog(formExport);
-         }         
+         }
+
+         // Експорт
+         var exportPanels = outsPanelToExport.Where(p => p.DbStatus == DB.EnumBaseStatus.Ok).ToList();
+         DB.DbExportColor.Export(exportPanels);
       }
 
       private List<OutsidePanel> defineOutsidePanelsToExport()

@@ -1,0 +1,870 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SAPRModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="I_C_BuildingPart">
+          <Key>
+            <PropertyRef Name="BuildingPartId" />
+          </Key>
+          <Property Name="BuildingPartId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildingPart" Type="nvarchar" MaxLength="50" />
+          <Property Name="BuildingPartText" Type="nvarchar" MaxLength="20" />
+          <Property Name="BuildingPartCode" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="I_C_Formula">
+          <Key>
+            <PropertyRef Name="FormulaId" />
+          </Key>
+          <Property Name="FormulaId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormulaValue" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FormulaAuthor" Type="nvarchar" MaxLength="50" />
+          <Property Name="FormulaCreateDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="I_C_ItemGroupLong">
+          <Key>
+            <PropertyRef Name="ItemGroupLongId" />
+          </Key>
+          <Property Name="ItemGroupLongId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemGroupLong" Type="nvarchar" MaxLength="100" />
+          <Property Name="ItemGroupShortId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="I_C_ItemGroupShort">
+          <Key>
+            <PropertyRef Name="ItemGroupShortId" />
+          </Key>
+          <Property Name="ItemGroupShortId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemGroupShort" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="I_C_Tier">
+          <Key>
+            <PropertyRef Name="TierId" />
+          </Key>
+          <Property Name="TierId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tier" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="I_nn_Item_Series">
+          <Key>
+            <PropertyRef Name="ItemSeriesId" />
+          </Key>
+          <Property Name="ItemSeriesId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SeriesId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="I_nn_Item_Tier">
+          <Key>
+            <PropertyRef Name="ItemTierId" />
+          </Key>
+          <Property Name="ItemTierId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="TierId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="I_R_Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HandMark" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemGroupId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Lenght" Type="smallint" />
+          <Property Name="Height" Type="smallint" />
+          <Property Name="Thickness" Type="smallint" />
+          <Property Name="Formwork" Type="smallint" />
+          <Property Name="FormworkMirror" Type="smallint" />
+          <Property Name="Electrics" Type="nvarchar" MaxLength="10" />
+          <Property Name="BalconyDoorId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="BalconyCutId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Colour" Type="nvarchar" MaxLength="255" />
+          <Property Name="Additional" Type="nvarchar" MaxLength="255" />
+          <Property Name="MosColour" Type="nvarchar" MaxLength="20" />
+          <Property Name="NCS" Type="nvarchar" MaxLength="20" />
+          <Property Name="RAL" Type="nvarchar" MaxLength="20" />
+          <Property Name="Weight" Type="real" />
+          <Property Name="Volume" Type="real" />
+          <Property Name="ArcHeight" Type="int" />
+          <Property Name="ArcWidth" Type="int" />
+          <Property Name="Article1C" Type="nvarchar" MaxLength="255" />
+          <Property Name="Code1C" Type="int" />
+          <Property Name="DocumentLink" Type="nvarchar(max)" />
+          <Property Name="ItemCreateDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemModifyDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="I_S_BalconyCut">
+          <Key>
+            <PropertyRef Name="BalconyCutId" />
+          </Key>
+          <Property Name="BalconyCutId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BalconyCut" Type="nvarchar" MaxLength="5" />
+          <Property Name="BalconyCutSize" Type="int" />
+          <Property Name="SideId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="I_S_ItemGroup">
+          <Key>
+            <PropertyRef Name="ItemGroupId" />
+          </Key>
+          <Property Name="ItemGroupId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemGroupUsage" Type="bit" Nullable="false" />
+          <Property Name="ItemGroup" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemGroupLongId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ItemGroupTextISO" Type="nvarchar" MaxLength="255" />
+          <Property Name="BuildingPartId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ItemGroupISO" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemGroupStatic" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemGroupCut" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemGroupLayer" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="I_S_Series">
+          <Key>
+            <PropertyRef Name="SeriesId" />
+          </Key>
+          <Property Name="SeriesId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeriesParentId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Series" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="I_S_Side">
+          <Key>
+            <PropertyRef Name="SideId" />
+          </Key>
+          <Property Name="SideId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Side" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_I_C_ItemGroupLong_I_C_ItemGroupShort">
+          <End Role="I_C_ItemGroupShort" Type="Self.I_C_ItemGroupShort" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_C_ItemGroupLong" Type="Self.I_C_ItemGroupLong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_C_ItemGroupShort">
+              <PropertyRef Name="ItemGroupShortId" />
+            </Principal>
+            <Dependent Role="I_C_ItemGroupLong">
+              <PropertyRef Name="ItemGroupShortId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_nn_Item_Series_I_R_Item">
+          <End Role="I_R_Item" Type="Self.I_R_Item" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_nn_Item_Series" Type="Self.I_nn_Item_Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_R_Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="I_nn_Item_Series">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_nn_Item_Series_I_S_Series">
+          <End Role="I_S_Series" Type="Self.I_S_Series" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_nn_Item_Series" Type="Self.I_nn_Item_Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_Series">
+              <PropertyRef Name="SeriesId" />
+            </Principal>
+            <Dependent Role="I_nn_Item_Series">
+              <PropertyRef Name="SeriesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_nn_Item_Tier_I_C_Tier">
+          <End Role="I_C_Tier" Type="Self.I_C_Tier" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_nn_Item_Tier" Type="Self.I_nn_Item_Tier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_C_Tier">
+              <PropertyRef Name="TierId" />
+            </Principal>
+            <Dependent Role="I_nn_Item_Tier">
+              <PropertyRef Name="TierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_nn_Item_Tier_I_R_Item">
+          <End Role="I_R_Item" Type="Self.I_R_Item" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_nn_Item_Tier" Type="Self.I_nn_Item_Tier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_R_Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="I_nn_Item_Tier">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_R_Item_I_S_BalconyCut">
+          <End Role="I_S_BalconyCut" Type="Self.I_S_BalconyCut" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_R_Item" Type="Self.I_R_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_BalconyCut">
+              <PropertyRef Name="BalconyCutId" />
+            </Principal>
+            <Dependent Role="I_R_Item">
+              <PropertyRef Name="BalconyCutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_R_Item_I_S_ItemGroup">
+          <End Role="I_S_ItemGroup" Type="Self.I_S_ItemGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_R_Item" Type="Self.I_R_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_ItemGroup">
+              <PropertyRef Name="ItemGroupId" />
+            </Principal>
+            <Dependent Role="I_R_Item">
+              <PropertyRef Name="ItemGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_S_BalconyCut_I_S_Side">
+          <End Role="I_S_Side" Type="Self.I_S_Side" Multiplicity="0..1" />
+          <End Role="I_S_BalconyCut" Type="Self.I_S_BalconyCut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_Side">
+              <PropertyRef Name="SideId" />
+            </Principal>
+            <Dependent Role="I_S_BalconyCut">
+              <PropertyRef Name="SideId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_S_ItemGroup_I_C_BuildingPart">
+          <End Role="I_C_BuildingPart" Type="Self.I_C_BuildingPart" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_S_ItemGroup" Type="Self.I_S_ItemGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_C_BuildingPart">
+              <PropertyRef Name="BuildingPartId" />
+            </Principal>
+            <Dependent Role="I_S_ItemGroup">
+              <PropertyRef Name="BuildingPartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_S_ItemGroup_I_C_ItemGroupLong">
+          <End Role="I_C_ItemGroupLong" Type="Self.I_C_ItemGroupLong" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_S_ItemGroup" Type="Self.I_S_ItemGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_C_ItemGroupLong">
+              <PropertyRef Name="ItemGroupLongId" />
+            </Principal>
+            <Dependent Role="I_S_ItemGroup">
+              <PropertyRef Name="ItemGroupLongId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_S_Series_I_S_Series">
+          <End Role="I_S_Series" Type="Self.I_S_Series" Multiplicity="0..1" />
+          <End Role="I_S_Series1" Type="Self.I_S_Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_Series">
+              <PropertyRef Name="SeriesId" />
+            </Principal>
+            <Dependent Role="I_S_Series1">
+              <PropertyRef Name="SeriesParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SAPRModelContainer">
+          <EntitySet Name="I_C_BuildingPart" EntityType="Self.I_C_BuildingPart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_C_Formula" EntityType="Self.I_C_Formula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_C_ItemGroupLong" EntityType="Self.I_C_ItemGroupLong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_C_ItemGroupShort" EntityType="Self.I_C_ItemGroupShort" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_C_Tier" EntityType="Self.I_C_Tier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_nn_Item_Series" EntityType="Self.I_nn_Item_Series" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_nn_Item_Tier" EntityType="Self.I_nn_Item_Tier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_R_Item" EntityType="Self.I_R_Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_S_BalconyCut" EntityType="Self.I_S_BalconyCut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_S_ItemGroup" EntityType="Self.I_S_ItemGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_S_Series" EntityType="Self.I_S_Series" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_S_Side" EntityType="Self.I_S_Side" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_I_C_ItemGroupLong_I_C_ItemGroupShort" Association="Self.FK_I_C_ItemGroupLong_I_C_ItemGroupShort">
+            <End Role="I_C_ItemGroupShort" EntitySet="I_C_ItemGroupShort" />
+            <End Role="I_C_ItemGroupLong" EntitySet="I_C_ItemGroupLong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_nn_Item_Series_I_R_Item" Association="Self.FK_I_nn_Item_Series_I_R_Item">
+            <End Role="I_R_Item" EntitySet="I_R_Item" />
+            <End Role="I_nn_Item_Series" EntitySet="I_nn_Item_Series" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_nn_Item_Series_I_S_Series" Association="Self.FK_I_nn_Item_Series_I_S_Series">
+            <End Role="I_S_Series" EntitySet="I_S_Series" />
+            <End Role="I_nn_Item_Series" EntitySet="I_nn_Item_Series" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_nn_Item_Tier_I_C_Tier" Association="Self.FK_I_nn_Item_Tier_I_C_Tier">
+            <End Role="I_C_Tier" EntitySet="I_C_Tier" />
+            <End Role="I_nn_Item_Tier" EntitySet="I_nn_Item_Tier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_nn_Item_Tier_I_R_Item" Association="Self.FK_I_nn_Item_Tier_I_R_Item">
+            <End Role="I_R_Item" EntitySet="I_R_Item" />
+            <End Role="I_nn_Item_Tier" EntitySet="I_nn_Item_Tier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_R_Item_I_S_BalconyCut" Association="Self.FK_I_R_Item_I_S_BalconyCut">
+            <End Role="I_S_BalconyCut" EntitySet="I_S_BalconyCut" />
+            <End Role="I_R_Item" EntitySet="I_R_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_R_Item_I_S_ItemGroup" Association="Self.FK_I_R_Item_I_S_ItemGroup">
+            <End Role="I_S_ItemGroup" EntitySet="I_S_ItemGroup" />
+            <End Role="I_R_Item" EntitySet="I_R_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_S_BalconyCut_I_S_Side" Association="Self.FK_I_S_BalconyCut_I_S_Side">
+            <End Role="I_S_Side" EntitySet="I_S_Side" />
+            <End Role="I_S_BalconyCut" EntitySet="I_S_BalconyCut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_S_ItemGroup_I_C_BuildingPart" Association="Self.FK_I_S_ItemGroup_I_C_BuildingPart">
+            <End Role="I_C_BuildingPart" EntitySet="I_C_BuildingPart" />
+            <End Role="I_S_ItemGroup" EntitySet="I_S_ItemGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_S_ItemGroup_I_C_ItemGroupLong" Association="Self.FK_I_S_ItemGroup_I_C_ItemGroupLong">
+            <End Role="I_C_ItemGroupLong" EntitySet="I_C_ItemGroupLong" />
+            <End Role="I_S_ItemGroup" EntitySet="I_S_ItemGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_S_Series_I_S_Series" Association="Self.FK_I_S_Series_I_S_Series">
+            <End Role="I_S_Series" EntitySet="I_S_Series" />
+            <End Role="I_S_Series1" EntitySet="I_S_Series" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAPRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="I_C_BuildingPart">
+          <Key>
+            <PropertyRef Name="BuildingPartId" />
+          </Key>
+          <Property Name="BuildingPartId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingPart" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BuildingPartText" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BuildingPartCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="I_S_ItemGroup" Relationship="Self.FK_I_S_ItemGroup_I_C_BuildingPart" FromRole="I_C_BuildingPart" ToRole="I_S_ItemGroup" />
+        </EntityType>
+        <EntityType Name="I_C_Formula">
+          <Key>
+            <PropertyRef Name="FormulaId" />
+          </Key>
+          <Property Name="FormulaId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormulaValue" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="FormulaAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FormulaCreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="I_C_ItemGroupLong">
+          <Key>
+            <PropertyRef Name="ItemGroupLongId" />
+          </Key>
+          <Property Name="ItemGroupLongId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemGroupLong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupShortId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="I_C_ItemGroupShort" Relationship="Self.FK_I_C_ItemGroupLong_I_C_ItemGroupShort" FromRole="I_C_ItemGroupLong" ToRole="I_C_ItemGroupShort" />
+          <NavigationProperty Name="I_S_ItemGroup" Relationship="Self.FK_I_S_ItemGroup_I_C_ItemGroupLong" FromRole="I_C_ItemGroupLong" ToRole="I_S_ItemGroup" />
+        </EntityType>
+        <EntityType Name="I_C_ItemGroupShort">
+          <Key>
+            <PropertyRef Name="ItemGroupShortId" />
+          </Key>
+          <Property Name="ItemGroupShortId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemGroupShort" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="I_C_ItemGroupLong" Relationship="Self.FK_I_C_ItemGroupLong_I_C_ItemGroupShort" FromRole="I_C_ItemGroupShort" ToRole="I_C_ItemGroupLong" />
+        </EntityType>
+        <EntityType Name="I_C_Tier">
+          <Key>
+            <PropertyRef Name="TierId" />
+          </Key>
+          <Property Name="TierId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tier" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="I_nn_Item_Tier" Relationship="Self.FK_I_nn_Item_Tier_I_C_Tier" FromRole="I_C_Tier" ToRole="I_nn_Item_Tier" />
+        </EntityType>
+        <EntityType Name="I_nn_Item_Series">
+          <Key>
+            <PropertyRef Name="ItemSeriesId" />
+          </Key>
+          <Property Name="ItemSeriesId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SeriesId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="I_R_Item" Relationship="Self.FK_I_nn_Item_Series_I_R_Item" FromRole="I_nn_Item_Series" ToRole="I_R_Item" />
+          <NavigationProperty Name="I_S_Series" Relationship="Self.FK_I_nn_Item_Series_I_S_Series" FromRole="I_nn_Item_Series" ToRole="I_S_Series" />
+        </EntityType>
+        <EntityType Name="I_nn_Item_Tier">
+          <Key>
+            <PropertyRef Name="ItemTierId" />
+          </Key>
+          <Property Name="ItemTierId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TierId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="I_C_Tier" Relationship="Self.FK_I_nn_Item_Tier_I_C_Tier" FromRole="I_nn_Item_Tier" ToRole="I_C_Tier" />
+          <NavigationProperty Name="I_R_Item" Relationship="Self.FK_I_nn_Item_Tier_I_R_Item" FromRole="I_nn_Item_Tier" ToRole="I_R_Item" />
+        </EntityType>
+        <EntityType Name="I_R_Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HandMark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Lenght" Type="Int16" />
+          <Property Name="Height" Type="Int16" />
+          <Property Name="Thickness" Type="Int16" />
+          <Property Name="Formwork" Type="Int16" />
+          <Property Name="FormworkMirror" Type="Int16" />
+          <Property Name="Electrics" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BalconyDoorId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BalconyCutId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Colour" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Additional" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MosColour" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NCS" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RAL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="Single" />
+          <Property Name="Volume" Type="Single" />
+          <Property Name="ArcHeight" Type="Int32" />
+          <Property Name="ArcWidth" Type="Int32" />
+          <Property Name="Article1C" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Code1C" Type="Int32" />
+          <Property Name="DocumentLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemModifyDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="I_nn_Item_Series" Relationship="Self.FK_I_nn_Item_Series_I_R_Item" FromRole="I_R_Item" ToRole="I_nn_Item_Series" />
+          <NavigationProperty Name="I_nn_Item_Tier" Relationship="Self.FK_I_nn_Item_Tier_I_R_Item" FromRole="I_R_Item" ToRole="I_nn_Item_Tier" />
+          <NavigationProperty Name="I_S_BalconyCut" Relationship="Self.FK_I_R_Item_I_S_BalconyCut" FromRole="I_R_Item" ToRole="I_S_BalconyCut" />
+          <NavigationProperty Name="I_S_ItemGroup" Relationship="Self.FK_I_R_Item_I_S_ItemGroup" FromRole="I_R_Item" ToRole="I_S_ItemGroup" />
+        </EntityType>
+        <EntityType Name="I_S_BalconyCut">
+          <Key>
+            <PropertyRef Name="BalconyCutId" />
+          </Key>
+          <Property Name="BalconyCutId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BalconyCut" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="BalconyCutSize" Type="Int32" />
+          <Property Name="SideId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="I_R_Item" Relationship="Self.FK_I_R_Item_I_S_BalconyCut" FromRole="I_S_BalconyCut" ToRole="I_R_Item" />
+          <NavigationProperty Name="I_S_Side" Relationship="Self.FK_I_S_BalconyCut_I_S_Side" FromRole="I_S_BalconyCut" ToRole="I_S_Side" />
+        </EntityType>
+        <EntityType Name="I_S_ItemGroup">
+          <Key>
+            <PropertyRef Name="ItemGroupId" />
+          </Key>
+          <Property Name="ItemGroupId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemGroupUsage" Type="Boolean" Nullable="false" />
+          <Property Name="ItemGroup" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupLongId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ItemGroupTextISO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BuildingPartId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ItemGroupISO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupStatic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupCut" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupLayer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="I_C_BuildingPart" Relationship="Self.FK_I_S_ItemGroup_I_C_BuildingPart" FromRole="I_S_ItemGroup" ToRole="I_C_BuildingPart" />
+          <NavigationProperty Name="I_C_ItemGroupLong" Relationship="Self.FK_I_S_ItemGroup_I_C_ItemGroupLong" FromRole="I_S_ItemGroup" ToRole="I_C_ItemGroupLong" />
+          <NavigationProperty Name="I_R_Item" Relationship="Self.FK_I_R_Item_I_S_ItemGroup" FromRole="I_S_ItemGroup" ToRole="I_R_Item" />
+        </EntityType>
+        <EntityType Name="I_S_Series">
+          <Key>
+            <PropertyRef Name="SeriesId" />
+          </Key>
+          <Property Name="SeriesId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeriesParentId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Series" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="I_nn_Item_Series" Relationship="Self.FK_I_nn_Item_Series_I_S_Series" FromRole="I_S_Series" ToRole="I_nn_Item_Series" />
+          <NavigationProperty Name="I_S_Series1" Relationship="Self.FK_I_S_Series_I_S_Series" FromRole="I_S_Series" ToRole="I_S_Series1" />
+          <NavigationProperty Name="I_S_Series2" Relationship="Self.FK_I_S_Series_I_S_Series" FromRole="I_S_Series1" ToRole="I_S_Series" />
+        </EntityType>
+        <EntityType Name="I_S_Side">
+          <Key>
+            <PropertyRef Name="SideId" />
+          </Key>
+          <Property Name="SideId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Side" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="I_S_BalconyCut" Relationship="Self.FK_I_S_BalconyCut_I_S_Side" FromRole="I_S_Side" ToRole="I_S_BalconyCut" />
+        </EntityType>
+        <Association Name="FK_I_S_ItemGroup_I_C_BuildingPart">
+          <End Role="I_C_BuildingPart" Type="Self.I_C_BuildingPart" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_S_ItemGroup" Type="Self.I_S_ItemGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_C_BuildingPart">
+              <PropertyRef Name="BuildingPartId" />
+            </Principal>
+            <Dependent Role="I_S_ItemGroup">
+              <PropertyRef Name="BuildingPartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_C_ItemGroupLong_I_C_ItemGroupShort">
+          <End Role="I_C_ItemGroupShort" Type="Self.I_C_ItemGroupShort" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_C_ItemGroupLong" Type="Self.I_C_ItemGroupLong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_C_ItemGroupShort">
+              <PropertyRef Name="ItemGroupShortId" />
+            </Principal>
+            <Dependent Role="I_C_ItemGroupLong">
+              <PropertyRef Name="ItemGroupShortId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_S_ItemGroup_I_C_ItemGroupLong">
+          <End Role="I_C_ItemGroupLong" Type="Self.I_C_ItemGroupLong" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_S_ItemGroup" Type="Self.I_S_ItemGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_C_ItemGroupLong">
+              <PropertyRef Name="ItemGroupLongId" />
+            </Principal>
+            <Dependent Role="I_S_ItemGroup">
+              <PropertyRef Name="ItemGroupLongId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_nn_Item_Tier_I_C_Tier">
+          <End Role="I_C_Tier" Type="Self.I_C_Tier" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_nn_Item_Tier" Type="Self.I_nn_Item_Tier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_C_Tier">
+              <PropertyRef Name="TierId" />
+            </Principal>
+            <Dependent Role="I_nn_Item_Tier">
+              <PropertyRef Name="TierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_nn_Item_Series_I_R_Item">
+          <End Role="I_R_Item" Type="Self.I_R_Item" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_nn_Item_Series" Type="Self.I_nn_Item_Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_R_Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="I_nn_Item_Series">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_nn_Item_Series_I_S_Series">
+          <End Role="I_S_Series" Type="Self.I_S_Series" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_nn_Item_Series" Type="Self.I_nn_Item_Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_Series">
+              <PropertyRef Name="SeriesId" />
+            </Principal>
+            <Dependent Role="I_nn_Item_Series">
+              <PropertyRef Name="SeriesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_nn_Item_Tier_I_R_Item">
+          <End Role="I_R_Item" Type="Self.I_R_Item" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_nn_Item_Tier" Type="Self.I_nn_Item_Tier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_R_Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="I_nn_Item_Tier">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_R_Item_I_S_BalconyCut">
+          <End Role="I_S_BalconyCut" Type="Self.I_S_BalconyCut" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_R_Item" Type="Self.I_R_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_BalconyCut">
+              <PropertyRef Name="BalconyCutId" />
+            </Principal>
+            <Dependent Role="I_R_Item">
+              <PropertyRef Name="BalconyCutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_R_Item_I_S_ItemGroup">
+          <End Role="I_S_ItemGroup" Type="Self.I_S_ItemGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_R_Item" Type="Self.I_R_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_ItemGroup">
+              <PropertyRef Name="ItemGroupId" />
+            </Principal>
+            <Dependent Role="I_R_Item">
+              <PropertyRef Name="ItemGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_S_BalconyCut_I_S_Side">
+          <End Role="I_S_Side" Type="Self.I_S_Side" Multiplicity="0..1" />
+          <End Role="I_S_BalconyCut" Type="Self.I_S_BalconyCut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_Side">
+              <PropertyRef Name="SideId" />
+            </Principal>
+            <Dependent Role="I_S_BalconyCut">
+              <PropertyRef Name="SideId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_S_Series_I_S_Series">
+          <End Role="I_S_Series" Type="Self.I_S_Series" Multiplicity="0..1" />
+          <End Role="I_S_Series1" Type="Self.I_S_Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_S_Series">
+              <PropertyRef Name="SeriesId" />
+            </Principal>
+            <Dependent Role="I_S_Series1">
+              <PropertyRef Name="SeriesParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="I_C_BuildingPart" EntityType="Self.I_C_BuildingPart" />
+          <EntitySet Name="I_C_Formula" EntityType="Self.I_C_Formula" />
+          <EntitySet Name="I_C_ItemGroupLong" EntityType="Self.I_C_ItemGroupLong" />
+          <EntitySet Name="I_C_ItemGroupShort" EntityType="Self.I_C_ItemGroupShort" />
+          <EntitySet Name="I_C_Tier" EntityType="Self.I_C_Tier" />
+          <EntitySet Name="I_nn_Item_Series" EntityType="Self.I_nn_Item_Series" />
+          <EntitySet Name="I_nn_Item_Tier" EntityType="Self.I_nn_Item_Tier" />
+          <EntitySet Name="I_R_Item" EntityType="Self.I_R_Item" />
+          <EntitySet Name="I_S_BalconyCut" EntityType="Self.I_S_BalconyCut" />
+          <EntitySet Name="I_S_ItemGroup" EntityType="Self.I_S_ItemGroup" />
+          <EntitySet Name="I_S_Series" EntityType="Self.I_S_Series" />
+          <EntitySet Name="I_S_Side" EntityType="Self.I_S_Side" />
+          <AssociationSet Name="FK_I_S_ItemGroup_I_C_BuildingPart" Association="Self.FK_I_S_ItemGroup_I_C_BuildingPart">
+            <End Role="I_C_BuildingPart" EntitySet="I_C_BuildingPart" />
+            <End Role="I_S_ItemGroup" EntitySet="I_S_ItemGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_C_ItemGroupLong_I_C_ItemGroupShort" Association="Self.FK_I_C_ItemGroupLong_I_C_ItemGroupShort">
+            <End Role="I_C_ItemGroupShort" EntitySet="I_C_ItemGroupShort" />
+            <End Role="I_C_ItemGroupLong" EntitySet="I_C_ItemGroupLong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_S_ItemGroup_I_C_ItemGroupLong" Association="Self.FK_I_S_ItemGroup_I_C_ItemGroupLong">
+            <End Role="I_C_ItemGroupLong" EntitySet="I_C_ItemGroupLong" />
+            <End Role="I_S_ItemGroup" EntitySet="I_S_ItemGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_nn_Item_Tier_I_C_Tier" Association="Self.FK_I_nn_Item_Tier_I_C_Tier">
+            <End Role="I_C_Tier" EntitySet="I_C_Tier" />
+            <End Role="I_nn_Item_Tier" EntitySet="I_nn_Item_Tier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_nn_Item_Series_I_R_Item" Association="Self.FK_I_nn_Item_Series_I_R_Item">
+            <End Role="I_R_Item" EntitySet="I_R_Item" />
+            <End Role="I_nn_Item_Series" EntitySet="I_nn_Item_Series" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_nn_Item_Series_I_S_Series" Association="Self.FK_I_nn_Item_Series_I_S_Series">
+            <End Role="I_S_Series" EntitySet="I_S_Series" />
+            <End Role="I_nn_Item_Series" EntitySet="I_nn_Item_Series" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_nn_Item_Tier_I_R_Item" Association="Self.FK_I_nn_Item_Tier_I_R_Item">
+            <End Role="I_R_Item" EntitySet="I_R_Item" />
+            <End Role="I_nn_Item_Tier" EntitySet="I_nn_Item_Tier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_R_Item_I_S_BalconyCut" Association="Self.FK_I_R_Item_I_S_BalconyCut">
+            <End Role="I_S_BalconyCut" EntitySet="I_S_BalconyCut" />
+            <End Role="I_R_Item" EntitySet="I_R_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_R_Item_I_S_ItemGroup" Association="Self.FK_I_R_Item_I_S_ItemGroup">
+            <End Role="I_S_ItemGroup" EntitySet="I_S_ItemGroup" />
+            <End Role="I_R_Item" EntitySet="I_R_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_S_BalconyCut_I_S_Side" Association="Self.FK_I_S_BalconyCut_I_S_Side">
+            <End Role="I_S_Side" EntitySet="I_S_Side" />
+            <End Role="I_S_BalconyCut" EntitySet="I_S_BalconyCut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_S_Series_I_S_Series" Association="Self.FK_I_S_Series_I_S_Series">
+            <End Role="I_S_Series" EntitySet="I_S_Series" />
+            <End Role="I_S_Series1" EntitySet="I_S_Series" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SAPRModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="I_C_BuildingPart">
+            <EntityTypeMapping TypeName="SAPRModel.I_C_BuildingPart">
+              <MappingFragment StoreEntitySet="I_C_BuildingPart">
+                <ScalarProperty Name="BuildingPartId" ColumnName="BuildingPartId" />
+                <ScalarProperty Name="BuildingPart" ColumnName="BuildingPart" />
+                <ScalarProperty Name="BuildingPartText" ColumnName="BuildingPartText" />
+                <ScalarProperty Name="BuildingPartCode" ColumnName="BuildingPartCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_C_Formula">
+            <EntityTypeMapping TypeName="SAPRModel.I_C_Formula">
+              <MappingFragment StoreEntitySet="I_C_Formula">
+                <ScalarProperty Name="FormulaId" ColumnName="FormulaId" />
+                <ScalarProperty Name="FormulaValue" ColumnName="FormulaValue" />
+                <ScalarProperty Name="FormulaAuthor" ColumnName="FormulaAuthor" />
+                <ScalarProperty Name="FormulaCreateDate" ColumnName="FormulaCreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_C_ItemGroupLong">
+            <EntityTypeMapping TypeName="SAPRModel.I_C_ItemGroupLong">
+              <MappingFragment StoreEntitySet="I_C_ItemGroupLong">
+                <ScalarProperty Name="ItemGroupLongId" ColumnName="ItemGroupLongId" />
+                <ScalarProperty Name="ItemGroupLong" ColumnName="ItemGroupLong" />
+                <ScalarProperty Name="ItemGroupShortId" ColumnName="ItemGroupShortId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_C_ItemGroupShort">
+            <EntityTypeMapping TypeName="SAPRModel.I_C_ItemGroupShort">
+              <MappingFragment StoreEntitySet="I_C_ItemGroupShort">
+                <ScalarProperty Name="ItemGroupShortId" ColumnName="ItemGroupShortId" />
+                <ScalarProperty Name="ItemGroupShort" ColumnName="ItemGroupShort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_C_Tier">
+            <EntityTypeMapping TypeName="SAPRModel.I_C_Tier">
+              <MappingFragment StoreEntitySet="I_C_Tier">
+                <ScalarProperty Name="TierId" ColumnName="TierId" />
+                <ScalarProperty Name="Tier" ColumnName="Tier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_nn_Item_Series">
+            <EntityTypeMapping TypeName="SAPRModel.I_nn_Item_Series">
+              <MappingFragment StoreEntitySet="I_nn_Item_Series">
+                <ScalarProperty Name="ItemSeriesId" ColumnName="ItemSeriesId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="SeriesId" ColumnName="SeriesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_nn_Item_Tier">
+            <EntityTypeMapping TypeName="SAPRModel.I_nn_Item_Tier">
+              <MappingFragment StoreEntitySet="I_nn_Item_Tier">
+                <ScalarProperty Name="ItemTierId" ColumnName="ItemTierId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="TierId" ColumnName="TierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_R_Item">
+            <EntityTypeMapping TypeName="SAPRModel.I_R_Item">
+              <MappingFragment StoreEntitySet="I_R_Item">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="HandMark" ColumnName="HandMark" />
+                <ScalarProperty Name="ItemGroupId" ColumnName="ItemGroupId" />
+                <ScalarProperty Name="Lenght" ColumnName="Lenght" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Thickness" ColumnName="Thickness" />
+                <ScalarProperty Name="Formwork" ColumnName="Formwork" />
+                <ScalarProperty Name="FormworkMirror" ColumnName="FormworkMirror" />
+                <ScalarProperty Name="Electrics" ColumnName="Electrics" />
+                <ScalarProperty Name="BalconyDoorId" ColumnName="BalconyDoorId" />
+                <ScalarProperty Name="BalconyCutId" ColumnName="BalconyCutId" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="Additional" ColumnName="Additional" />
+                <ScalarProperty Name="MosColour" ColumnName="MosColour" />
+                <ScalarProperty Name="NCS" ColumnName="NCS" />
+                <ScalarProperty Name="RAL" ColumnName="RAL" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="ArcHeight" ColumnName="ArcHeight" />
+                <ScalarProperty Name="ArcWidth" ColumnName="ArcWidth" />
+                <ScalarProperty Name="Article1C" ColumnName="Article1C" />
+                <ScalarProperty Name="Code1C" ColumnName="Code1C" />
+                <ScalarProperty Name="DocumentLink" ColumnName="DocumentLink" />
+                <ScalarProperty Name="ItemCreateDate" ColumnName="ItemCreateDate" />
+                <ScalarProperty Name="ItemModifyDate" ColumnName="ItemModifyDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_S_BalconyCut">
+            <EntityTypeMapping TypeName="SAPRModel.I_S_BalconyCut">
+              <MappingFragment StoreEntitySet="I_S_BalconyCut">
+                <ScalarProperty Name="BalconyCutId" ColumnName="BalconyCutId" />
+                <ScalarProperty Name="BalconyCut" ColumnName="BalconyCut" />
+                <ScalarProperty Name="BalconyCutSize" ColumnName="BalconyCutSize" />
+                <ScalarProperty Name="SideId" ColumnName="SideId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_S_ItemGroup">
+            <EntityTypeMapping TypeName="SAPRModel.I_S_ItemGroup">
+              <MappingFragment StoreEntitySet="I_S_ItemGroup">
+                <ScalarProperty Name="ItemGroupId" ColumnName="ItemGroupId" />
+                <ScalarProperty Name="ItemGroupUsage" ColumnName="ItemGroupUsage" />
+                <ScalarProperty Name="ItemGroup" ColumnName="ItemGroup" />
+                <ScalarProperty Name="ItemGroupLongId" ColumnName="ItemGroupLongId" />
+                <ScalarProperty Name="ItemGroupTextISO" ColumnName="ItemGroupTextISO" />
+                <ScalarProperty Name="BuildingPartId" ColumnName="BuildingPartId" />
+                <ScalarProperty Name="ItemGroupISO" ColumnName="ItemGroupISO" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemGroupStatic" ColumnName="ItemGroupStatic" />
+                <ScalarProperty Name="ItemGroupCut" ColumnName="ItemGroupCut" />
+                <ScalarProperty Name="ItemGroupLayer" ColumnName="ItemGroupLayer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_S_Series">
+            <EntityTypeMapping TypeName="SAPRModel.I_S_Series">
+              <MappingFragment StoreEntitySet="I_S_Series">
+                <ScalarProperty Name="SeriesId" ColumnName="SeriesId" />
+                <ScalarProperty Name="SeriesParentId" ColumnName="SeriesParentId" />
+                <ScalarProperty Name="Series" ColumnName="Series" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_S_Side">
+            <EntityTypeMapping TypeName="SAPRModel.I_S_Side">
+              <MappingFragment StoreEntitySet="I_S_Side">
+                <ScalarProperty Name="SideId" ColumnName="SideId" />
+                <ScalarProperty Name="Side" ColumnName="Side" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

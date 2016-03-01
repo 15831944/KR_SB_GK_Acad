@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6c60613a83e74f9eb2402cbca7238952" Name="Diagram1">
+        <EntityTypeShape EntityType="SAPRModel.I_C_BuildingPart" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_C_Formula" Width="1.5" PointX="9.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_C_ItemGroupLong" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_C_ItemGroupShort" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_C_Tier" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_nn_Item_Series" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_nn_Item_Tier" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_R_Item" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_S_BalconyCut" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_S_ItemGroup" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_S_Series" Width="1.5" PointX="7.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAPRModel.I_S_Side" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="SAPRModel.FK_I_S_ItemGroup_I_C_BuildingPart" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_C_ItemGroupLong_I_C_ItemGroupShort" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_S_ItemGroup_I_C_ItemGroupLong" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_nn_Item_Tier_I_C_Tier" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_nn_Item_Series_I_R_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_nn_Item_Series_I_S_Series" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_nn_Item_Tier_I_R_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_R_Item_I_S_BalconyCut" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_R_Item_I_S_ItemGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_S_BalconyCut_I_S_Side" ManuallyRouted="false" />
+        <AssociationConnector Association="SAPRModel.FK_I_S_Series_I_S_Series" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
