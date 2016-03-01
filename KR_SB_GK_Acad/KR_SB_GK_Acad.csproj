@@ -77,8 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="Model\ExportColorIndex\CheckAccess.cs" />
+    <Compile Include="Model\Logger.cs" />
+    <Compile Include="Model\ExportColorIndex\Access.cs" />
     <Compile Include="Model\ExportColorIndex\DB\DbCheckPanels.cs" />
     <Compile Include="Model\ExportColorIndex\DB\DbExportColor.cs" />
     <Compile Include="Model\ExportColorIndex\DB\EnumBaseStatus.cs" />

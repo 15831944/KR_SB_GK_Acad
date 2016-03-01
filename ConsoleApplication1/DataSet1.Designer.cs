@@ -10999,7 +10999,7 @@ SELECT ItemId, HandMark, ItemGroupId, Lenght, Height, Thickness, Formwork, Formw
             this._commandCollection[1].CommandText = @"SELECT        ItemId, HandMark, ItemGroupId, Lenght, Height, Thickness, Formwork, FormworkMirror, Electrics, BalconyDoorId, BalconyCutId, Colour, Additional, MosColour, NCS, 
                          RAL, Weight, Volume, ArcHeight, ArcWidth, Article1C, Code1C, DocumentLink, ItemCreateDate, ItemModifyDate
 FROM            I_R_Item
-WHERE        (HandMark = @mark)";
+WHERE        (HandMark LIKE @mark)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mark", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HandMark", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
